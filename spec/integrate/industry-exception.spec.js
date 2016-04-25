@@ -14,9 +14,7 @@ describe("exception", () => {
       .set("instance", instance)
       .set("standard_io", standard_io)
       .base(class {
-        hello() {
-          throw "world"
-        }
+        hello() { throw new Error("world") }
       })
   }
 
@@ -24,7 +22,7 @@ describe("exception", () => {
     test = makeTest()
   })
 
-  it("prints nice error", () => {
-    test.hello()
+  it("prints nice error", (done) => {
+    test().hello().catch(done)
   })
 })
