@@ -1,5 +1,9 @@
-import PrettyError from "pretty-error"
-let pe = new PrettyError()
+let pe
+
+if (typeof document == "undefined") {
+  let PrettyError = require(`${""}pretty-error`)
+  pe = new PrettyError()
+}
 
 export let exception = Class =>
   class extends Class {
@@ -11,6 +15,8 @@ export let exception = Class =>
     }
 
     exception({ e }) {
-      console.log(pe.render(e))
+      if (typeof document == "undefined") {
+        console.log(pe.render(e))
+      }
     }
   }
