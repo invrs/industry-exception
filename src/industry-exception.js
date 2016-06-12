@@ -1,7 +1,8 @@
 let pe
 
 if (typeof document == "undefined") {
-  let PrettyError = require(`${""}pretty-error`)
+  let empty = ""
+  let PrettyError = require(`${empty}pretty-error`)
   pe = new PrettyError()
 }
 
